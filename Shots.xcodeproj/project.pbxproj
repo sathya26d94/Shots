@@ -171,14 +171,9 @@
 		0C52539F2291C13C0099AD28 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C5253B522931ED40099AD28 /* cells */,
 				0C52535B22901B950099AD28 /* Main.storyboard */,
 				0C52535922901B950099AD28 /* ShotsListController.swift */,
-				0C52538E229133C50099AD28 /* ShotCollectionViewCell.swift */,
-				0C52538F229133C50099AD28 /* ShotCollectionViewCell.xib */,
-				0C5253AF229273240099AD28 /* ActivityLoaderCollectionViewCell.swift */,
-				0C5253B0229273240099AD28 /* ActivityLoaderCollectionViewCell.xib */,
-				0C525396229184680099AD28 /* ShotsHeaderCollectionViewCell.swift */,
-				0C52539C2291BC950099AD28 /* ShotsHeaderCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -263,6 +258,19 @@
 				0C5253AB2291C77F0099AD28 /* ShotDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0C5253B522931ED40099AD28 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				0C52538E229133C50099AD28 /* ShotCollectionViewCell.swift */,
+				0C52538F229133C50099AD28 /* ShotCollectionViewCell.xib */,
+				0C5253AF229273240099AD28 /* ActivityLoaderCollectionViewCell.swift */,
+				0C5253B0229273240099AD28 /* ActivityLoaderCollectionViewCell.xib */,
+				0C525396229184680099AD28 /* ShotsHeaderCollectionViewCell.swift */,
+				0C52539C2291BC950099AD28 /* ShotsHeaderCollectionViewCell.xib */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		0DC3DB7298BA6F4F1030FB44 /* Frameworks */ = {
