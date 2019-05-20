@@ -4,7 +4,7 @@ Image APIS to showcase images from this service.
 The app has the following two screens:
 1. A screen that shows all the images as thumbnails arranged in a collection view.
 2. Tapping on a thumbnail in the collection view opens a screen that shows the
-image on the full screen. The following informations are overlaid on the image in its
+image with full resolution. The following informations are overlaid on the image in its
 bottom part.
 a. ID
 b. Author
