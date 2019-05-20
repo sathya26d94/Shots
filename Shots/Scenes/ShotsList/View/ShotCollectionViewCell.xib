@@ -19,6 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="227"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-hg-4sL">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <color key="backgroundColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oRI-sJ-8Lb">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <constraints>
@@ -41,10 +45,14 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="kaL-hg-4sL" firstAttribute="top" secondItem="oRI-sJ-8Lb" secondAttribute="top" id="74m-rT-cc9"/>
                 <constraint firstItem="FjU-rl-kcB" firstAttribute="top" secondItem="oRI-sJ-8Lb" secondAttribute="bottom" constant="2" id="8Ro-e9-xvk"/>
+                <constraint firstItem="kaL-hg-4sL" firstAttribute="trailing" secondItem="oRI-sJ-8Lb" secondAttribute="trailing" id="CBX-gd-Bao"/>
                 <constraint firstItem="oRI-sJ-8Lb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="CDE-Cd-fa6"/>
                 <constraint firstAttribute="trailing" secondItem="oRI-sJ-8Lb" secondAttribute="trailing" id="Kbq-at-k2y"/>
                 <constraint firstItem="oRI-sJ-8Lb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TfN-zk-ouC"/>
+                <constraint firstItem="kaL-hg-4sL" firstAttribute="bottom" secondItem="oRI-sJ-8Lb" secondAttribute="bottom" id="djX-fx-fP7"/>
+                <constraint firstItem="kaL-hg-4sL" firstAttribute="leading" secondItem="oRI-sJ-8Lb" secondAttribute="leading" id="e1L-Ts-P4c"/>
                 <constraint firstItem="FjU-rl-kcB" firstAttribute="leading" secondItem="oRI-sJ-8Lb" secondAttribute="leading" id="tGy-Rj-YZT"/>
                 <constraint firstAttribute="bottom" secondItem="FjU-rl-kcB" secondAttribute="bottom" constant="5" id="u6e-GH-kGo"/>
             </constraints>
@@ -53,6 +61,7 @@
             <connections>
                 <outlet property="authorLabel" destination="FjU-rl-kcB" id="6dH-nP-p5d"/>
                 <outlet property="imageView" destination="oRI-sJ-8Lb" id="6O5-BH-KeK"/>
+                <outlet property="skeletonView" destination="kaL-hg-4sL" id="YTx-pL-KU3"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="41.183035714285715"/>
         </collectionViewCell>

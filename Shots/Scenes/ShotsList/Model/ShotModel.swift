@@ -13,17 +13,17 @@ import Foundation
 struct ShotModel: Codable {
     var id: String
     var author: String
-    var download_url: String
+    var imageUrl: String
     var width: Int
     var height: Int
     
-    enum codingkeys: String, CodingKey {
+    private enum CodingKeys : String, CodingKey {
         
         case id
         case author
         case width
         case height
-        case download_url = "download_url"
+        case imageUrl = "download_url"
         
     }
     
@@ -32,8 +32,7 @@ struct ShotModel: Codable {
         do {
             let responseJsonData = try JSONSerialization.data(withJSONObject: responseObject, options: .prettyPrinted)
             let decoder = JSONDecoder()
-            let ShotList = try decoder.decode([ShotModel].self, from: responseJsonData)
-            print(ShotList)
+            let ShotList = try decoder.decode([ShotModel].self, from: responseJsonData)      
             return ShotList
         }catch {
             print(error)

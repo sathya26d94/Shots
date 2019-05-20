@@ -21,9 +21,7 @@ protocol shotDetailViewModelType {
     
     var imageURL: URL {get}
     
-    var placeHolderImage: URL {get}
-    
-    var imageAspectRatio: CGFloat {get}
+    var placeHolderImage: URL {get}    
     
 }
 
@@ -52,12 +50,6 @@ class ShotDetailViewModel: shotDetailViewModelType   {
     var placeHolderImage: URL {
         get {
             return getPlaceHolderImageURL()
-        }
-    }
-    
-    var imageAspectRatio: CGFloat {
-        get {
-            return CGFloat(self.shotData.width/self.shotData.height)
         }
     }
     

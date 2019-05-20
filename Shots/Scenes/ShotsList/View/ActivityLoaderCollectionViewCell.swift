@@ -10,9 +10,19 @@ import UIKit
 
 class ActivityLoaderCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func starLoader() {
+        loader.startAnimating()
+    }
+    
+    func stopLoader() {
+        loader.stopAnimating()
     }
 
 }

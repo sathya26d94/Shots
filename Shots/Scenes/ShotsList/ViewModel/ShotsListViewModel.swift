@@ -6,8 +6,6 @@
 //  Copyright © 2019 SaTHYa. All rights reserved.
 //
 
-//todo image caching, image sizing
-
 import Foundation
 import UIKit
 

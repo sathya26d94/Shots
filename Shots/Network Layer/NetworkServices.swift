@@ -25,9 +25,8 @@ open class NetworkServices {
                                 errorHandler: @escaping ErrorHandler) {
         
         let completionHandler: NetworkCompletionHandler = { (data, urlResponse, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                errorHandler(self.genericError)
+            if let error = error {                
+                errorHandler(error.localizedDescription)
                 return
             }
             

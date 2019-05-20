@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
+class ShotsListWireFrame {
+    
+    var shotDetailViewController: ShotDetailViewController?
+    
+    func presentDetailInterface(fromController: UIViewController, shotData: ShotModel){
+        
+        shotDetailViewController = ShotDetailViewController()
+        shotDetailViewController?.shotDetailViewModel = ShotDetailViewModel.init(shotData: shotData)
+        fromController.navigationController?.pushViewController(shotDetailViewController!, animated: true)
+        
+    }
+}

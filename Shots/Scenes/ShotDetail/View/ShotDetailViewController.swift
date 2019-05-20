@@ -14,7 +14,12 @@ class ShotDetailViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var resolutionLabel: UILabel!
-    @IBOutlet weak var imageViewAspectRatioConstraint: NSLayoutConstraint!
+    @IBOutlet weak var activityLoader: UIActivityIndicatorView!
+    
+    @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textBoxLeadingPortraitConstraint: NSLayoutConstraint!
+    
     
     var shotDetailViewModel: ShotDetailViewModel?
     
@@ -31,15 +36,19 @@ class ShotDetailViewController: UIViewController {
     }
     func renderUI() {
         
+        activityLoader.startAnimating()
+        
         if let shotDetailViewModel = shotDetailViewModel {
             
             authorLabel.attributedText = shotDetailViewModel.author
             idLabel.attributedText = shotDetailViewModel.id
             resolutionLabel.attributedText = shotDetailViewModel.resolution
-            imageViewAspectRatioConstraint = imageViewAspectRatioConstraint.setMultiplier(multiplier: shotDetailViewModel.imageAspectRatio)
+            
             imageView.kf.setImage(with: shotDetailViewModel.placeHolderImage, placeholder: nil, options: nil, progressBlock: nil) { (result) in
                 self.imageView.kf.setImage(with: shotDetailViewModel.imageURL, placeholder: try? result.get().image, options: nil, progressBlock: nil) { (result) in
                     self.imageView.image = try? result.get().image
+                    
+                    self.activityLoader.stopAnimating()
                 }
                 
             }

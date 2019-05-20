@@ -11,6 +11,7 @@ import Kingfisher
 
 class ShotCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var skeletonView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     var shotData: ShotModel? {
@@ -24,6 +25,8 @@ class ShotCollectionViewCell: UICollectionViewCell {
         
         self.imageView.layer.cornerRadius = 8
         self.imageView.layer.masksToBounds = true
+        self.skeletonView.layer.cornerRadius = 8
+        self.skeletonView.layer.masksToBounds = true
         
     }
     

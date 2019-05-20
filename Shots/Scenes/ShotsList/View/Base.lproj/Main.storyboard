@@ -13,7 +13,7 @@
         <!--Shots List Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ShotsListController" customModule="Shots" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShotsListController" id="BYZ-38-t0r" customClass="ShotsListController" customModule="Shots" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,8 +45,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iZ4-YK-TzI" secondAttribute="trailing" id="PQl-Oz-iqa"/>
-                            <constraint firstItem="iZ4-YK-TzI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="X47-4G-ZPT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iZ4-YK-TzI" secondAttribute="trailing" id="PQl-Oz-iqa"/>
+                            <constraint firstItem="iZ4-YK-TzI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="X47-4G-ZPT"/>
                             <constraint firstItem="iZ4-YK-TzI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="sfF-i4-28T"/>
                             <constraint firstAttribute="bottom" secondItem="iZ4-YK-TzI" secondAttribute="bottom" id="uqL-B9-NV0"/>
                         </constraints>
