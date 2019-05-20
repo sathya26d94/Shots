@@ -14,7 +14,7 @@ d. Height in points
 - The UI is adapted to both iPhone and iPad devices.
 - The collection view keeps loading more content
 as the user keep scrolling down.
-- Modern MVVM patern
+- Used MVVM patern
 
 # TODOS:
 1) Add unit test cases.
