@@ -21,7 +21,7 @@ protocol shotDetailViewModelType {
     
     var imageURL: URL {get}
     
-    var placeHolderImage: URL {get}    
+    var placeHolderImage: URL {get}
     
 }
 
