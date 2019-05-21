@@ -15,7 +15,7 @@ d. Height in points
 - The collection view keeps loading more content
 as the user keep scrolling down.
 
-# TODOS:
+## TODOS:
 1) Add unit test cases.
 2) Stop calling List api when all contents are fetched.
 3) Inside detai page, if swipes down, load the next image with its details with charming animation 
@@ -23,7 +23,7 @@ as the user keep scrolling down.
 5) If user is offline, show alert 
 5) add comments
 
-# API Ref:
+## API Ref:
 1. PicSum API details: https://picsum.photos/
 2. PicSum List API: https://picsum.photos/v2/list?page=2&limit=100
 3. PicSum Image Detail API: https://picsum.photos/id/237/200/300
