@@ -21,7 +21,7 @@ as the user keep scrolling down.
 3) Inside detai page, if swipes down, load the next image with its details with charming animation 
 4) Add launch animation
 5) If user is offline, show alert 
-5) add comments
+5) add comments.
 
 ## API Ref:
 1. PicSum API details: https://picsum.photos/
