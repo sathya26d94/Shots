@@ -10,16 +10,13 @@ import UIKit
 
 class ShotsHeaderCollectionViewCell: UICollectionReusableView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor.purple
-
-        // Customize here
-        
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
+    func setTitle(titleText: String) {
+        titleLabel.text = titleText
     }
 }

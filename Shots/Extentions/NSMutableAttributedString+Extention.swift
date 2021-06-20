@@ -9,7 +9,8 @@
 import UIKit
 
 extension NSMutableAttributedString {
-    @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
+    @discardableResult
+    func bold(_ text: String) -> NSMutableAttributedString {
         
         let isDeviceiPad = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ? true : false
         let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "AvenirNext-Bold", size: isDeviceiPad ? 24 : 16)!]
@@ -19,7 +20,8 @@ extension NSMutableAttributedString {
         return self
     }
     
-    @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
+    @discardableResult
+    func normal(_ text: String) -> NSMutableAttributedString {
         
         let isDeviceiPad = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ? true : false
         let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "AvenirNext-Regular", size: isDeviceiPad ? 24 : 16)!]

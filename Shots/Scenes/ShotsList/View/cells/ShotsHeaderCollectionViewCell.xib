@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,12 +24,15 @@
                     </variation>
                 </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="jJM-3l-ojY"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Qpb-2S-1aE" secondAttribute="bottom" id="AiF-Bh-thj"/>
                 <constraint firstItem="Qpb-2S-1aE" firstAttribute="top" secondItem="P71-re-ib8" secondAttribute="top" id="DEN-ne-Dbo"/>
                 <constraint firstItem="Qpb-2S-1aE" firstAttribute="leading" secondItem="jJM-3l-ojY" secondAttribute="leading" constant="16" id="fyY-le-wh2"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="jJM-3l-ojY"/>
+            <connections>
+                <outlet property="titleLabel" destination="Qpb-2S-1aE" id="DaU-iM-RB9"/>
+            </connections>
             <point key="canvasLocation" x="-113" y="47"/>
         </collectionReusableView>
     </objects>

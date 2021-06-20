@@ -16,16 +16,15 @@ open class NetworkServices {
     
     static let shared = NetworkServices()
     
-    private init() {
-    }
+    private init() {}
     
     open func get(pathUrl: String,
-                                parameters: [String: String] = [:],
-                                successHandler: @escaping (Any) -> Void,
-                                errorHandler: @escaping ErrorHandler) {
+                  parameters: [String: String] = [:],
+                  successHandler: @escaping (Any) -> Void,
+                  errorHandler: @escaping ErrorHandler) {
         
         let completionHandler: NetworkCompletionHandler = { (data, urlResponse, error) in
-            if let error = error {                
+            if let error = error {
                 errorHandler(error.localizedDescription)
                 return
             }
@@ -35,7 +34,7 @@ open class NetworkServices {
                     return errorHandler(self.genericError)
                 }
                 if let responseObject =  try? JSONSerialization.jsonObject(with:
-                    data, options: []) {
+                                                                            data, options: []) {
                     successHandler(responseObject)
                     return
                 }
@@ -51,9 +50,7 @@ open class NetworkServices {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request, completionHandler: completionHandler).resume()
     }
-    
-    
-    
+
     private func isSuccessCode(_ statusCode: Int) -> Bool {
         return statusCode >= 200 && statusCode < 300
     }
@@ -77,4 +74,3 @@ open class NetworkServices {
         return urlVars.isEmpty ? "" : "?" + urlVars.joined(separator: "&")
     }
 }
-
