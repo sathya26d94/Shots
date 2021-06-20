@@ -7,22 +7,33 @@
 //
 
 import UIKit
+import RxSwift
 
 class ShotsListController: UIViewController {
     
+    // MARK: - UI Elements
     @IBOutlet weak var collectionView: UICollectionView!
-
-    let shotsListViewModel: ShotsListViewModel = ShotsListViewModel()
     
-    lazy var wireFrame: ShotsListWireFrame = {
+    // MARK: - Properties
+    private let disposeBag = DisposeBag()
+    private let shotsListViewModel: ShotsListViewModelProtocol = ShotsListViewModel()
+    private lazy var wireFrame: ShotsListWireFrame = {
         return ShotsListWireFrame()
     }()
+    private var noOfCellsInRow: CGFloat {
+        UIApplication.shared.statusBarOrientation.isLandscape ? 3.0 : 2.0
+    }
     
+    //MARK: - Constants
+    private let indicatorCellHeight: CGFloat = 100.0
+    private let headerCellHeight: CGFloat = 48.0
+    private let shotsCellHeightConstant: CGFloat = 28.0
+
+    //MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        shotsListViewModel.delegate = self
         registerNibs()
-        shotsListViewModel.fetchShots()
+        addCollectionViewBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,40 +43,78 @@ class ShotsListController: UIViewController {
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    //MARK: - Bindings
+    private func addCollectionViewBindings() {
+        shotsListViewModel.shotModelItems
+            .bind(to: collectionView.rx.items(dataSource: shotsListViewModel.shotModelDataSource.dataSource()))
+            .disposed(by: disposeBag)
         
+        collectionView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        collectionView.rx
+            .willDisplayCell
+            .subscribe(onNext: { [weak self] cell, indexPath in
+                if let cell = cell as? ActivityLoaderCollectionViewCell {
+                    cell.starLoader()
+                    self?.shotsListViewModel.fetchNextPage()
+                }
+            }).disposed(by: disposeBag)
+        
+        collectionView.rx
+            .didEndDisplayingCell
+            .subscribe(onNext: { cell, indexPath in
+                if let cell = cell as? ActivityLoaderCollectionViewCell {
+                    cell.stopLoader()
+                }
+            }).disposed(by: disposeBag)
     }
-    
-    
-}
-
-extension ShotsListController : ShotsListDelegate {
-    
-    func ShotsListDidChanged() {
-        collectionView.reloadData()
-    }
-    
-    func openDetailView(with data: ShotModel) {
-        self.wireFrame.presentDetailInterface(fromController: self, shotData: data)
-    }
-    
-}
-
-extension ShotsListController {
     
     private func registerNibs() {
-        
-        let shotsNib = UINib(nibName: shotsListViewModel.collectionViewCellReuseIdentifier, bundle:nil)
-        collectionView.register(shotsNib, forCellWithReuseIdentifier: shotsListViewModel.collectionViewCellReuseIdentifier)
-        
-        let headerNib = UINib(nibName: shotsListViewModel.collectionViewHeaderIdentifier, bundle: nil)
-        self.collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: shotsListViewModel.collectionViewHeaderIdentifier)
-        
-        let loaderNib = UINib(nibName: shotsListViewModel.collectionViewLoaderCellReuseIdentifier, bundle: nil)
-        collectionView.register(loaderNib, forCellWithReuseIdentifier: shotsListViewModel.collectionViewLoaderCellReuseIdentifier)
-        
-        collectionView.delegate = shotsListViewModel
-        collectionView.dataSource = shotsListViewModel
+        collectionView.register(ShotCollectionViewCell.self)
+        collectionView.register(ActivityLoaderCollectionViewCell.self)
+        collectionView.register(
+            supplementaryViewType: ShotsHeaderCollectionViewCell.self,
+            ofKind: UICollectionView.elementKindSectionHeader
+        )                
     }
     
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
+extension ShotsListController: UICollectionViewDelegateFlowLayout {
+    
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+                        
+            let window = UIApplication.shared.keyWindow
+            guard let leftSafeAreaInset = (window?.safeAreaInsets.left),
+                  let rightSafeAreaInset = (window?.safeAreaInsets.right),
+                  let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
+            else { return .zero }
+            
+            let lastRowIndex = max(0, collectionView.numberOfItems(inSection: indexPath.section) - 1)
+            //Activity Indicator View Cell
+            if lastRowIndex == indexPath.row {
+                let viewPadding = flowLayout.sectionInset.left + flowLayout.sectionInset.right
+                return CGSize(width: collectionView.bounds.width - viewPadding, height: indicatorCellHeight)
+            } else { //Shots View Cell
+                let totalHorizontalEmptySpaces = flowLayout.sectionInset.left
+                    + flowLayout.sectionInset.right
+                    + (flowLayout.minimumInteritemSpacing * (noOfCellsInRow - 1))
+                    + leftSafeAreaInset
+                    + rightSafeAreaInset
+                
+                let width = (UIScreen.main.bounds.width - totalHorizontalEmptySpaces) / noOfCellsInRow
+                let height = width + shotsCellHeightConstant
+                return CGSize(width: width, height: height)
+            }
+        }
+    
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(width: collectionView.frame.width, height: headerCellHeight)
+        }
+    
+}
