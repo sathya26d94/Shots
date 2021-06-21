@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxDataSources
+
+typealias CollectionViewDataSource = RxCollectionViewSectionedReloadDataSource
 
 extension UICollectionReusableView {
     static var reuseIdentifier: String {
