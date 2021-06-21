@@ -12,8 +12,6 @@ import RxSwift
 import RxRelay
 import RxDataSources
 
-typealias DataSource = RxCollectionViewSectionedReloadDataSource
-
 protocol ShotsListViewModelProtocol {
     var shotModelItems: BehaviorRelay<[ShotListCollectionViewSections]> { get }
     var shotModelDataSource: ShotListCollectionViewDataSource { get }

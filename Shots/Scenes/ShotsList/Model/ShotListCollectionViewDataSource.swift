@@ -43,10 +43,9 @@ extension ShotListCollectionViewSections: SectionModelType {
 }
 
 struct ShotListCollectionViewDataSource {
-    typealias DataSource = RxCollectionViewSectionedReloadDataSource
     
-    func dataSource() -> DataSource<ShotListCollectionViewSections> {
-        let dataSource = DataSource<ShotListCollectionViewSections>
+    func dataSource() -> CollectionViewDataSource<ShotListCollectionViewSections> {
+        let dataSource = CollectionViewDataSource<ShotListCollectionViewSections>
             .init(configureCell: { dataSource, collectionView, indexPath, item -> UICollectionViewCell in
                 
                 switch dataSource[indexPath] {
