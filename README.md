@@ -22,6 +22,7 @@ as the user keep scrolling down.
 4) Add launch animation
 5) If user is offline, show alert 
 5) add comments.
+6) Use Rxswift in details screen as well
 
 ## API Ref:
 1. PicSum API details: https://picsum.photos/
